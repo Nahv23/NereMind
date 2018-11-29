@@ -2,18 +2,18 @@
  
 function Game (){
   
-  this.masterMind = new Board(colors);
+  this.masterMind = new Board();
   this.rows = 0;
 
 }
 
-Game.prototype.startGame () = function (){ // funcion que hará empezar el juego
+Game.prototype.startGame = function (){ // funcion que hará empezar el juego
 
  this.masterMind.createSecretCode ();
 
- this.masterMind.availableColors ();
+ this.masterMind.availableColors (); //FUNCION SIN HACER
 
- this.masterMind.creatRows ();
+ this.masterMind.creatRows (); //FUNCION SIN HACER
 
 
 //  if(this.isThePassword){

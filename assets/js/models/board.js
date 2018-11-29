@@ -9,15 +9,16 @@ function Board () {
   this.tokensGuesses = ["black", "white"]; // colores para ver si se ha acertado o no el color y posicion
   this.colorGuesses = []; // array donde iré si se ha acertado o no
 
+  this.correct;
     
 }
 
-// Crea la combinacion que hay que adivinar
+// Crea la combinacion que hay que adivinar //FUNCIONA!!!!!
 Board.prototype.createSecretCode = function (){ 
 
   for (var i=0; i<4 ; i++){
 
-    this.secret.push(tokensColors[Math.floor(Math.random()*tokensColors.length)]);
+    this.secret.push(this.tokensColors[Math.floor(Math.random()*this.tokensColors.length)]);
   }
 }
  
@@ -36,14 +37,23 @@ Board.prototype.delete = function () {
 }
 
 
-//cuando se da al boton de Ok se lanza esta funcion para comprobar si se ha acertado o no
+//cuando se da al boton de Ok se lanza esta funcion para comprobar si se ha acertado o no //NO TERMINA DE FUNCIONAR
 Board.prototype.isThePassword = function (){
 
-    if (this.secret === this.tokensPicked){
-      return true;
-    }else {
-      return false;
-    }
+  this.correct = 0 ;
+
+  return this.secret.map(function(item, index) {
+    if (item === this.tokensPicked[index]){
+      this.correct++;
+       }
+  })
+
+
+    // if (this.secret === this.tokensPicked){
+    //   return true;
+    // }else {
+    //   return false;
+    // }
 }
 
 
@@ -52,3 +62,6 @@ Board.prototype.result = function (){
 
 
 }
+
+
+
