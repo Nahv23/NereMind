@@ -1,0 +1,18 @@
+
+
+body{
+ 
+        font-family: 'Bubblegum Sans';
+        font-style: normal;
+        font-weight: 40;   
+}
+
+/* COLORES DISPONIBLES */
+.green { background: #8FBE00; }
+.red { background: #E22D2D; }
+.blue { background: #008C9E; }
+.yellow { background: #F8CA00; }
+.grey { background: #494849; }
+.rose { background: #ff00d4; }
+.white { background: #fff; }
+.black { background: #191919; }
