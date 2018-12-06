@@ -1,12 +1,5 @@
 
 
-body{
- 
-        font-family: 'Bubblegum Sans';
-        font-style: normal;
-        font-weight: 40;   
-}
-
 /* COLORES DISPONIBLES */
 .green { background: #8FBE00; }
 .red { background: #E22D2D; }
@@ -16,3 +9,37 @@ body{
 .rose { background: #ff00d4; }
 .white { background: #fff; }
 .black { background: #191919; }
+
+
+#main-board {
+  display: inline-block;
+  background-color: #b8a28d;
+  border-radius: 15px 15px 15px 15px;
+  height: 650px;
+  width: 500px;
+  border: #191919;
+  border-style: double;
+}
+
+hr{
+  width: 60%;
+  border: inset;
+}
+
+h1{
+  text-align: center;
+  margin-top: 10%;
+
+}
+
+#board{
+
+  padding: 8%;
+}
+
+.token {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
