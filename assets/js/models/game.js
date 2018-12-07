@@ -3,7 +3,7 @@ function Game() {
   this.secret = []
   this.board = new Board()
   this.selectables = []
-  this.colorsList = ["red", "blue", "yellow", "grey", "green", "orange"];
+  this.colorsList = ["red", "blue", "yellow", "pink", "green", "orange"];
   //this.guess = 0;
   // Inicialización de elementos del DOM
   this.secretDOM = document.getElementById('secret')
@@ -74,7 +74,7 @@ Game.prototype.renderSelectables = function (){
 Game.prototype.renderBoard = function() {
   this.board.table.map(function(Token) {
     var newDiv = document.createElement("div");
-    newDiv.setAttribute("class", "token");
+    newDiv.setAttribute("class", "token table");
     newDiv.setAttribute("tabIndex", 1)
     // if(board.table === ""){ ///NO DIBUJA
     //   newDiv.style.backgroundColor = Token.color;
