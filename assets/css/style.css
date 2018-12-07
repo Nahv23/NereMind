@@ -10,16 +10,19 @@
 .white { background: #fff; }
 .black { background: #191919; }
 
+body{
+  background: linear-gradient(#9084fd, rgb(221, 215, 250))
+}
 
 #main-board {
-  background-color: #b8a28d;
+  background-color: #f87a03bb;
   border-radius: 15px 15px 15px 15px;
-  height: 700px;
+  height: 875px;
   width: 500px;
   border: #191919;
   border-style: double;
-  margin: auto;
-
+  margin: 2vh auto;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.808);
 }
 
 hr{
@@ -36,19 +39,19 @@ h1{
 }
 
 #board{
-
-  padding: 8%;
+  padding-left: 30%;
+  padding-right: 25%;
 }
 
 .token {
-  display: flex;
+ 
   height: 50px;
   width: 50px;
   border-radius: 50%;
   display: inline-flex;
   border: 0.5px solid rgba(0, 0, 0, 0.589);
   align-items: center;
-  justify-content: space-between;
+ 
 }
 
 #secret {
@@ -58,16 +61,21 @@ h1{
 }
 
 .tokenSecret {
-
   flex: auto;
-  margin-left: 6px;
+  margin-left: 20px;
   flex-direction: row;
 }
+
+
 
 .tokenSelectable {
   flex: auto;
   margin-left: 6px;
   flex-direction: row;
+}
+
+.tokenSelectable:hover {
+  border: 2px solid white;
 }
 
 #options{
@@ -78,7 +86,7 @@ h1{
   .table {
 
     flex-direction: row;
-    flex-wrap: wrap, 4;
     justify-content: space-between;
     align-content: center;
+    order: 4;
   }
