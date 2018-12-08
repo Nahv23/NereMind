@@ -19,7 +19,7 @@ Game.prototype.init = function() {
   this.createSelectables();
   this.renderSecret();
   this.renderBoard();
-  this.renderSelectables(); 
+  this.renderSelectables(); //Tendré que ponerlo en otro sitio cuando se muestre la clave
 
 }
 
@@ -39,7 +39,7 @@ Game.prototype.renderSecret = function (){
   this.secret.map(function(color, index){
     var newDiv = document.createElement("div");
     newDiv.setAttribute("id", index);
-    newDiv.setAttribute("class", "token tokenSecret");
+    newDiv.setAttribute("class", "token tokenSecret hide");
     newDiv.setAttribute("tabIndex", 1)
     newDiv.style.backgroundColor = color;
     this.secretDOM.appendChild(newDiv)
@@ -56,18 +56,18 @@ Game.prototype.createSelectables = function() {
 
 // Prototipo para crear elementos en el DOM referente a this.selectables
 Game.prototype.renderSelectables = function (){
-  this.selectables.map(function(Token){
+  this.selectables.map(function(token){
     var newDiv = document.createElement("div");
-    newDiv.setAttribute("id", Token.color);
+    newDiv.setAttribute("id", token.color);
     newDiv.setAttribute("class", "token tokenSelectable");
     newDiv.setAttribute("tabIndex", 1)
-    newDiv.style.backgroundColor = Token.color;
+    newDiv.style.backgroundColor = token.color;
     newDiv.addEventListener("click", function (event){
-      this.board.nextTile(Token)
-      this.changeColor (this.a, Token.color); //HACE FALTA LLAMAR A LA FUNCION QUE  PINTE, ¡¡¡FUNCIONA!!!
+      this.board.nextTile(token)
+      this.changeColorDOM (this.a, token.color);
       this.a++;
-        console.info('BOARD => ', this.board.table)
-      this.checkCoincidence(Token.color);
+      console.info('BOARD => ', this.board.table)
+      this.checkCoincidence(token.color);
     }.bind(this))
     this.optionsDOM.appendChild(newDiv)
 
@@ -93,7 +93,7 @@ Game.prototype.renderBoard = function() {
 }
 
 //Cambiar el color de la ficha por el color seleccionado ¡¡¡FUNCIONA!!!
-Game.prototype.changeColor = function (num, color){
+Game.prototype.changeColorDOM = function (num, color){
   var newColor = document.getElementsByClassName("token table")
   newColor[num].style.backgroundColor = color;  
 }
@@ -101,23 +101,26 @@ Game.prototype.changeColor = function (num, color){
 
 
 Game.prototype.checkCoincidence = function(color) { 
-  var boardEnd = this.board.table.indexOf('')
+  var boardEnd = this.board.table.indexOf(''); 
   if(boardEnd % 4 === 0) {
-    for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
-      if(this.board.table[i].Token.color === this.secret[i]){
-       console.log ("si");
-    } else {
-      console.log ("no");
-    }
-
-    // this.checkWin(this.board.table[i])
-    }
+    this.checkWin(this.board.table, this.secret)
   } else {
-    console.info('NO CONTAMOS', this.board.table[1], "secreto", this.secret[boardEnd])
+    console.info('NO CONTAMOS',)
   }
 }
 
 // // Revisar
-// Game.prototype.checkWin = function(secret, Token) {
-//   console.info('CHECK => ', secret, Token, secret === Token.color)
-// }
+Game.prototype.checkWin = function(token, secret) {
+  var boardEnd = this.board.table.indexOf('');
+  for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
+    if(token.color === secret[i]){
+      console.log ("si");
+      console.info('CHECK => ', secret, token, secret === token.color)
+        
+        } else {
+           console.log ("no");
+           console.info('CHECK => ', secret, token, secret === token.color)
+        }
+      
+      }
+}

@@ -60,9 +60,11 @@ h1{
   margin-top: 10%;
 }
 
-#secret .hide{
+.tokenSecret.hide{
 
-background-image: url("./img/top_secret.png") no repeat; 
+background-image: url("../img/top_secret.png");
+background-repeat: no-repeat; 
+background-size: 100px;
 
 
 }
