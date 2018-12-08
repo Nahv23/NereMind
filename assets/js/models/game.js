@@ -17,15 +17,9 @@ Game.prototype.init = function() {
   this.topSecret(); //Tapa el secreto
   this.createSecret();
   this.createSelectables();
-  this.renderSecret();
+  this.renderSecret();//Tendré que ponerlo en otro sitio cuando se muestre la clave
   this.renderBoard();
-  this.renderSelectables(); //Tendré que ponerlo en otro sitio cuando se muestre la clave
-
-}
-
-Game.prototype.stop = function (){
-
-  alert("Enhorabuena, has adivinado la contraseña");
+  this.renderSelectables(); 
 }
 
 Game.prototype.topSecret = function (){
@@ -107,9 +101,22 @@ Game.prototype.changeColorDOM = function (num, color){
 
 Game.prototype.checkCoincidence = function(color) { 
   var boardEnd = this.board.table.indexOf(''); 
-  if(boardEnd % 4 === 0) {
+  console.log ("boardEnd ->", boardEnd);
+ 
+  if (boardEnd === -1){ //Superado las 10 filas 
+    this.stop (2);
+
+  }else if(boardEnd % 4 === 0) {
+    var getRight = 0; //para ver cuantos colores se han acertado
+    var j = 3; // para recorrer el array secret
     for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
-       this.checkWin(this.board.table[i], this.secret[i])
+      if (this.isCorrect(this.board.table[i], this.secret[j])){
+        getRight++;
+        console.log ("acertadas ->", getRight);
+        this.checkWin (getRight);
+      }
+       console.log ("index de i ->", i, "index de j ->", j);
+       j--;
     }
    
   } else {
@@ -117,16 +124,29 @@ Game.prototype.checkCoincidence = function(color) {
   }
 }
 
-// // Revisar
-Game.prototype.checkWin = function(token, secret) {
-  
-    if(token.color === secret){
-      console.log ("si");
-      console.info('CHECK => ', secret, token, secret === token.color)
-        
-        } else {
-           console.log ("no");
-           console.info('CHECK => ', secret, token, secret === token.color)
-        }
-      
- }
+Game.prototype.isCorrect = function (token, secret){
+  if(token.color === secret){
+    return true;
+  } else {
+     return false;
+  }
+}
+
+Game.prototype.checkWin = function(getRight) {
+ 
+  if (getRight === 4){
+    this.stop(1);
+    } else {
+      return false;
+    }
+  }
+
+
+ Game.prototype.stop = function (whatHappen){
+  this.renderSecret(); //Para mostrar la contraseña
+  switch (whatHappen){
+    case 1: alert("Enhorabuena, has adivinado la contraseña");          break;
+    case 2: alert ("Has perdido");
+            break;
+  }
+}
