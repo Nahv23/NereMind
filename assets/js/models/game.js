@@ -23,6 +23,11 @@ Game.prototype.init = function() {
 
 }
 
+Game.prototype.stop = function (){
+
+  alert("Enhorabuena, has adivinado la contraseña");
+}
+
 Game.prototype.topSecret = function (){
   var hideSecret = document.getElementById("secret")
   hideSecret.setAttribute("class","hide"); 
@@ -103,7 +108,10 @@ Game.prototype.changeColorDOM = function (num, color){
 Game.prototype.checkCoincidence = function(color) { 
   var boardEnd = this.board.table.indexOf(''); 
   if(boardEnd % 4 === 0) {
-    this.checkWin(this.board.table, this.secret)
+    for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
+       this.checkWin(this.board.table[i], this.secret[i])
+    }
+   
   } else {
     console.info('NO CONTAMOS',)
   }
@@ -111,9 +119,8 @@ Game.prototype.checkCoincidence = function(color) {
 
 // // Revisar
 Game.prototype.checkWin = function(token, secret) {
-  var boardEnd = this.board.table.indexOf('');
-  for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
-    if(token.color === secret[i]){
+  
+    if(token.color === secret){
       console.log ("si");
       console.info('CHECK => ', secret, token, secret === token.color)
         
@@ -122,5 +129,4 @@ Game.prototype.checkWin = function(token, secret) {
            console.info('CHECK => ', secret, token, secret === token.color)
         }
       
-      }
-}
+ }
