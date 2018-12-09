@@ -60,13 +60,18 @@ h1{
   margin-top: 10%;
 }
 
-.tokenSecret.hide{
-
-background-image: url("../img/top_secret.png");
-background-repeat: no-repeat; 
-background-size: 100px;
-
-
+.image {
+    background-image: url(../img/ironhack.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    border: 1px solid rgba(0, 0, 0, 0.589);
+    align-items: center;
 }
 
 .tokenSecret {

@@ -14,7 +14,6 @@ function Game() {
 }
 
 Game.prototype.init = function() {
-  this.topSecret(); //Tapa el secreto
   this.createSecret();
   this.createSelectables();
   this.renderSecret();//Tendré que ponerlo en otro sitio cuando se muestre la clave
@@ -22,9 +21,15 @@ Game.prototype.init = function() {
   this.renderSelectables(); 
 }
 
-Game.prototype.topSecret = function (){
-  var hideSecret = document.getElementById("secret")
-  hideSecret.setAttribute("class","hide"); 
+Game.prototype.revealSecret = function (){
+  this.secret.map(function(color, index){
+    var newDiv = document.getElementById(index);
+    console.log ("newDiv ->", newDiv);
+    newDiv.removeAttribute("class");
+    newDiv.setAttribute("class", "token tokenSecret");
+    newDiv.style.backgroundColor = color;
+    this.secretDOM.appendChild(newDiv)
+  }.bind(this)); 
 }
 
 Game.prototype.createSecret = function() { //¡¡¡¡¡FUNCIONA!!!!!
@@ -38,9 +43,8 @@ Game.prototype.renderSecret = function (){
   this.secret.map(function(color, index){
     var newDiv = document.createElement("div");
     newDiv.setAttribute("id", index);
-    newDiv.setAttribute("class", "token tokenSecret hide");
+    newDiv.setAttribute("class", " tokenSecret image");
     newDiv.setAttribute("tabIndex", 1)
-    newDiv.style.backgroundColor = color;
     this.secretDOM.appendChild(newDiv)
   }.bind(this))
 
@@ -99,7 +103,7 @@ Game.prototype.changeColorDOM = function (num, color){
 
 
 
-Game.prototype.checkCoincidence = function(color) { 
+Game.prototype.checkCoincidence = function() { 
   var boardEnd = this.board.table.indexOf(''); 
   console.log ("boardEnd ->", boardEnd);
  
@@ -143,10 +147,13 @@ Game.prototype.checkWin = function(getRight) {
 
 
  Game.prototype.stop = function (whatHappen){
-  this.renderSecret(); //Para mostrar la contraseña
   switch (whatHappen){
-    case 1: alert("Enhorabuena, has adivinado la contraseña");          break;
+    case 1: alert("Enhorabuena, has adivinado la  contraseña");        
+      this.revealSecret(); //Revela el secreto 
+      break;
     case 2: alert ("Has perdido");
-            break;
+      this.revealSecret(); //Revela el secreto 
+      break;
+          
   }
 }
