@@ -15,8 +15,8 @@ body{
 }
 
 #main-board {
-  background-color: #f87a03bb;
-  border-radius: 15px 15px 15px 15px;
+  background-color: #ffb36cd6;
+  border-radius: 90px 42px 90px 42px;
   height: 875px;
   width: 500px;
   border: #191919;
@@ -35,23 +35,7 @@ h1{
   margin-top: 5%;
   text-decoration: underline;
   text-decoration-style: double;
-
-}
-
-#board{
-  padding-left: 30%;
-  padding-right: 25%;
-}
-
-.token {
- 
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  display: inline-flex;
-  border: 0.5px solid rgba(0, 0, 0, 0.589);
-  align-items: center;
- 
+  
 }
 
 #secret {
@@ -59,6 +43,43 @@ h1{
   margin: 23px auto;
   margin-top: 10%;
 }
+
+  .tokenSecret {
+    flex: auto;
+    margin-left: 20px;
+    flex-direction: row;
+  }
+
+.token {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.589);
+  align-items: center;
+}
+
+#board{
+  padding-left: 30%;
+  padding-right: 25%;
+}
+
+  .table {
+    float: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    order: 4;
+  }
+  
+  .result{
+    float: left;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  border: #191919
+  }
+
 
 .image {
     background-image: url(../img/ironhack.png);
@@ -74,12 +95,6 @@ h1{
     align-items: center;
 }
 
-.tokenSecret {
-  flex: auto;
-  margin-left: 20px;
-  flex-direction: row;
-}
-
 
 
 .tokenSelectable {
@@ -87,6 +102,7 @@ h1{
   margin-left: 6px;
   flex-direction: row;
 }
+
 
 .tokenSelectable:hover {
   border: 2px solid white;
@@ -96,11 +112,3 @@ h1{
   display: table;
   margin: 23px auto;
 }
-
-  .table {
-
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    order: 4;
-  }

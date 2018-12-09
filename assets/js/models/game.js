@@ -2,29 +2,45 @@
 function Game() {
   this.secret = [];
   this.board = new Board();
+  this.result = new Board ();
   this.selectables = []; 
-  this.colorsList = ["red", "blue", "yellow", "purple", "green", "orange"];
+  this.colorsList = ["red", "blue", "yellow", "purple", "green", "brown"];
   //this.guess = 0;
-  this.a = 0;
+  this.nextItem = 0;
 
   // Inicialización de elementos del DOM
   this.secretDOM = document.getElementById('secret');
-  this.boardDOM = document.getElementById('board');
+  this.boardDOM = document.getElementById('table');
+  this.resultDOM = document.getElementById('result');
   this.optionsDOM = document.getElementById('options');
 }
 
 Game.prototype.init = function() {
   this.createSecret();
   this.createSelectables();
-  this.renderSecret();//Tendré que ponerlo en otro sitio cuando se muestre la clave
+  this.renderSecret();
   this.renderBoard();
+  this.renderResult ();
   this.renderSelectables(); 
+}
+
+Game.prototype.stop = function (whatHappen){
+  switch (whatHappen){
+    case 1: 
+        this.revealSecret(); //Revela el secreto 
+        setTimeout(function(){alert("Enhorabuena, has adivinado la contraseña"); }, 250); 
+      break;
+
+    case 2: 
+        this.revealSecret(); //Revela el secreto 
+        setTimeout(function(){alert ("Has perdido"); }, 250); 
+      break;         
+  }
 }
 
 Game.prototype.revealSecret = function (){
   this.secret.map(function(color, index){
     var newDiv = document.getElementById(index);
-    console.log ("newDiv ->", newDiv);
     newDiv.removeAttribute("class");
     newDiv.setAttribute("class", "token tokenSecret");
     newDiv.style.backgroundColor = color;
@@ -32,13 +48,14 @@ Game.prototype.revealSecret = function (){
   }.bind(this)); 
 }
 
-Game.prototype.createSecret = function() { //¡¡¡¡¡FUNCIONA!!!!!
+Game.prototype.createSecret = function() { 
   for (var i=0; i<4 ; i++){
     this.secret.push(this.colorsList[Math.floor(Math.random()*this.colorsList.length)]);
   }
+  console.log(this.secret);
 }
 
-// Prototipo para crear elementos en el DOM referente a this.secret
+// Prototipo crea elementos en DOM ref a this.secret
 Game.prototype.renderSecret = function (){
   this.secret.map(function(color, index){
     var newDiv = document.createElement("div");
@@ -57,7 +74,7 @@ Game.prototype.createSelectables = function() {
   })
 }
 
-// Prototipo para crear elementos en el DOM referente a this.selectables
+// Prototipo crea elems en DOM ref a this.selectables
 Game.prototype.renderSelectables = function (){
   this.selectables.map(function(token){
     var newDiv = document.createElement("div");
@@ -67,9 +84,8 @@ Game.prototype.renderSelectables = function (){
     newDiv.style.backgroundColor = token.color;
     newDiv.addEventListener("click", function (event){
       this.board.nextTile(token)
-      this.changeColorDOM (this.a, token.color);
-      this.a++;
-      console.info('BOARD => ', this.board.table)
+      this.changeColorDOM (this.nextItem, token.color);
+      this.nextItem++;
       this.checkCoincidence(token.color);
     }.bind(this))
     this.optionsDOM.appendChild(newDiv)
@@ -84,7 +100,7 @@ Game.prototype.renderSelectables = function (){
 }
 
 
-// Prototipo para crear elementos en el DOM referente a this.board.table
+// Prototipo crea elems en DOM ref a this.board.table
 Game.prototype.renderBoard = function() {
   this.board.table.map(function() {
     var newDiv = document.createElement("div");
@@ -101,11 +117,41 @@ Game.prototype.changeColorDOM = function (num, color){
   newColor[num].style.backgroundColor = color;  
 }
 
+// Prototipo crea elems en DOM ref a this.result.table
+Game.prototype.renderResult = function() {
+  this.result.table.map(function() {
+    var newDiv = document.createElement("div");
+    newDiv.setAttribute("class", " token result");
+    newDiv.setAttribute("tabIndex", 1);
+    newDiv.style.backgroundColor = "grey";
+    this.boardDOM.appendChild(newDiv);
+  }.bind(this))
+}
+
+Game.prototype.giveResultDOM = function (index, numRight){
+
+  var newColor = document.getElementsByClassName("token result");
+  
+  for ( var drawBlack = numRight; drawBlack > 0; drawBlack--){
+   
+      newColor[index-1].style.backgroundColor = "black"; 
+      index--;
+    }
+  }
+
+  // var drawBlack = numRight;
+  // for ( var i = index - 1; i > index - 5; i--){
+  //   if( drawBlack >= numRight){
+  //     newColor[i].style.backgroundColor = "black";
+  //     drawBlack--;  
+  //   }
+  // }
+//}
 
 
 Game.prototype.checkCoincidence = function() { 
+
   var boardEnd = this.board.table.indexOf(''); 
-  console.log ("boardEnd ->", boardEnd);
  
   if (boardEnd === -1){ //Superado las 10 filas 
     this.stop (2);
@@ -117,14 +163,11 @@ Game.prototype.checkCoincidence = function() {
       if (this.isCorrect(this.board.table[i], this.secret[j])){
         getRight++;
         console.log ("acertadas ->", getRight);
+        this.giveResultDOM (boardEnd, getRight);
         this.checkWin (getRight);
       }
-       console.log ("index de i ->", i, "index de j ->", j);
        j--;
     }
-   
-  } else {
-    console.info('NO CONTAMOS',)
   }
 }
 
@@ -146,16 +189,3 @@ Game.prototype.checkWin = function(getRight) {
   }
 
 
-Game.prototype.stop = function (whatHappen){
-  switch (whatHappen){
-    case 1: 
-        this.revealSecret(); //Revela el secreto 
-        setTimeout(function(){alert("Enhorabuena, has adivinado la  contraseña"); }, 500); 
-      break;
-
-    case 2: 
-      this.revealSecret(); //Revela el secreto 
-      setTimeout(function(){alert ("Has perdido"); }, 500); 
-      break;         
-  }
-}
