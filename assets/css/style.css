@@ -17,7 +17,7 @@ body{
 #main-board {
   background-color: #ffb36cd6;
   border-radius: 90px 42px 90px 42px;
-  height: 875px;
+  height: 945px;
   width: 500px;
   border: #191919;
   border-style: double;
@@ -66,6 +66,7 @@ h1{
 
   .table {
     float: left;
+    margin: 2px;
     flex-direction: row;
     justify-content: space-between;
     align-content: center;

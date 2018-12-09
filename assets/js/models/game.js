@@ -139,16 +139,6 @@ Game.prototype.giveResultDOM = function (index, numRight){
     }
   }
 
-  // var drawBlack = numRight;
-  // for ( var i = index - 1; i > index - 5; i--){
-  //   if( drawBlack >= numRight){
-  //     newColor[i].style.backgroundColor = "black";
-  //     drawBlack--;  
-  //   }
-  // }
-//}
-
-
 Game.prototype.checkCoincidence = function() { 
 
   var boardEnd = this.board.table.indexOf(''); 
