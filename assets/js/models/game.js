@@ -146,14 +146,16 @@ Game.prototype.checkWin = function(getRight) {
   }
 
 
- Game.prototype.stop = function (whatHappen){
+Game.prototype.stop = function (whatHappen){
   switch (whatHappen){
-    case 1: alert("Enhorabuena, has adivinado la  contraseña");        
-      this.revealSecret(); //Revela el secreto 
+    case 1: 
+        this.revealSecret(); //Revela el secreto 
+        setTimeout(function(){alert("Enhorabuena, has adivinado la  contraseña"); }, 500); 
       break;
-    case 2: alert ("Has perdido");
+
+    case 2: 
       this.revealSecret(); //Revela el secreto 
-      break;
-          
+      setTimeout(function(){alert ("Has perdido"); }, 500); 
+      break;         
   }
 }
