@@ -1,18 +1,144 @@
 
 
 body{
- 
-        font-family: 'Bubblegum Sans';
-        font-style: normal;
-        font-weight: 40;   
+  background: linear-gradient(#9084fd, rgb(221, 215, 250));
+  /* margin-top: 100%; */
+  margin-bottom: 100%;
 }
 
-/* COLORES DISPONIBLES */
-.green { background: #8FBE00; }
-.red { background: #E22D2D; }
-.blue { background: #008C9E; }
-.yellow { background: #F8CA00; }
-.grey { background: #494849; }
-.rose { background: #ff00d4; }
-.white { background: #fff; }
-.black { background: #191919; }
+#main-board {
+  background-color: #ffb36cd6;
+  border-radius: 42px 90px 42px 90px;
+  height: 823px;
+  width: 450px;
+  border: #191919;
+  border-style: double;
+  margin: 5vh auto;
+  box-shadow: 30px 15px 100px 3px rgba(0, 0, 0, 0.800);
+}
+
+h1{
+  text-align: center;
+  margin-top: 6%;
+  text-decoration: underline;
+  text-decoration-style: double;
+  font-size: 40px;
+}
+
+hr{
+  width: 70%;
+  border: inset;
+}
+
+
+#secret {
+  display: table;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+  .tokenSecret {
+    margin-left: 20px;
+  }
+
+.token {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.589);
+  box-shadow: 1px 3px 4px 1px rgba(0, 0, 0, 0.800);
+  align-items: center;
+}
+
+#board{
+  padding-left: 8%;
+  padding-right: 6%;
+  display: flex;
+}
+
+#board > div {
+     padding: 15px;
+}
+
+  .tableGame {
+    float: left;
+    margin: 3px;
+    margin-left: 10px;
+    margin-top: 4px;
+
+  }
+  
+  .result{
+    float: right;
+    margin: 4px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+  }
+
+
+.image {
+  background-image: url(../img/ironhack.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 95px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.589);
+  align-items: center;
+}
+
+
+
+.tokenSelectable {
+  margin-left: 10px;
+}
+
+
+.tokenSelectable:hover {
+  border: 2px solid white;
+  cursor: -webkit-grab;
+}
+
+.non-selectables{
+  pointer-events: none;
+}
+
+#options{
+  display: table;
+  margin: 23px auto;
+}
+
+button{
+  margin-left: 40%;
+  font: 300 18.3333px FANTASY;
+  cursor: pointer;
+  box-shadow: 7px 6px 4px 0px rgba(0, 0, 0, 0.800);
+  border-radius: 23px;
+}
+
+button:hover{
+  color: rgb(185, 7, 7);
+  background-color: #fa8080;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  
+}
+
+
+footer{
+  text-align: right;
+  margin-right: 40px;
+}

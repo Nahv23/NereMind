@@ -1,5 +1,5 @@
-function Tokens ()  {
-
-this.color = color;
-
+function Token(color) {
+  this.color = color
 }
+
+

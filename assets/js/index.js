@@ -1,9 +1,8 @@
+
 window.onload = function() {
-var game = new Game ();
+  new Game().init()
+}
 
-  document.getElementById("start-button").onclick = function() {
-     game.startGame();
-    };
-
-  };
-  
+function myFunction() { //Funcion que recarga la pagina y resetea el juego
+  location.reload();
+}
