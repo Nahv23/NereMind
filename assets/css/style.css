@@ -1,28 +1,28 @@
 
 
-/* COLORES DISPONIBLES */
-.green { background: #8FBE00; }
-.red { background: #E22D2D; }
-.blue { background: #008C9E; }
-.yellow { background: #F8CA00; }
-.grey { background: #494849; }
-.pink { background: #ff00d4; }
-.white { background: #fff; }
-.black { background: #191919; }
-
 body{
-  background: linear-gradient(#9084fd, rgb(221, 215, 250))
+  background: linear-gradient(#9084fd, rgb(221, 215, 250));
+  /* margin-top: 100%; */
+  margin-bottom: 100%;
 }
 
 #main-board {
   background-color: #ffb36cd6;
   border-radius: 90px 42px 90px 42px;
-  height: 945px;
-  width: 500px;
+  height: 1050px;
+  width: 540px;
   border: #191919;
   border-style: double;
-  margin: 2vh auto;
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.808);
+  margin: 5vh auto;
+  box-shadow: 30px 15px 100px 3px rgba(0, 0, 0, 0.800);
+}
+
+h1{
+  text-align: center;
+  margin-top: 7%;
+  text-decoration: underline;
+  text-decoration-style: double;
+  font-size: 40px;
 }
 
 hr{
@@ -30,18 +30,12 @@ hr{
   border: inset;
 }
 
-h1{
-  text-align: center;
-  margin-top: 5%;
-  text-decoration: underline;
-  text-decoration-style: double;
-  
-}
 
 #secret {
   display: table;
-  margin: 23px auto;
+  margin: auto;
   margin-top: 10%;
+  margin-bottom: 5%;
 }
 
   .tokenSecret {
@@ -60,11 +54,17 @@ h1{
 }
 
 #board{
-  padding-left: 30%;
-  padding-right: 25%;
+  padding-left: 8%;
+  padding-right: 6%;
+  display: flex;
 }
 
-  .table {
+#board > div {
+
+  margin: 10px;
+  padding: 20px;
+}
+  .tableGame {
     float: left;
     margin: 2px;
     flex-direction: row;
@@ -74,11 +74,14 @@ h1{
   }
   
   .result{
-    float: left;
+    float: right;
+    margin: 4px;
+    margin-top: 20px;
+    margin-bottom: 15px;
     height: 20px;
     width: 20px;
     border-radius: 50%;
-  border: #191919
+    border: 1px solid rgba(0, 0, 0, 0.500);
   }
 
 
@@ -88,8 +91,8 @@ h1{
     background-position-x: center;
     background-position-y: center;
     background-size: 100px;
-    height: 50px;
-    width: 50px;
+    height: 65px;
+    width: 65px;
     border-radius: 50%;
     display: inline-flex;
     border: 1px solid rgba(0, 0, 0, 0.589);

@@ -104,7 +104,7 @@ Game.prototype.renderSelectables = function (){
 Game.prototype.renderBoard = function() {
   this.board.table.map(function() {
     var newDiv = document.createElement("div");
-    newDiv.setAttribute("class", "token table");
+    newDiv.setAttribute("class", "token tableGame");
     newDiv.setAttribute("tabIndex", 1)
     newDiv.style.backgroundColor = "grey";
     this.boardDOM.appendChild(newDiv)
@@ -113,7 +113,7 @@ Game.prototype.renderBoard = function() {
 
 //Cambiar el color de la ficha por el color seleccionado ¡¡¡FUNCIONA!!!
 Game.prototype.changeColorDOM = function (num, color){
-  var newColor = document.getElementsByClassName("token table")
+  var newColor = document.getElementsByClassName("token tableGame")
   newColor[num].style.backgroundColor = color;  
 }
 
@@ -124,7 +124,7 @@ Game.prototype.renderResult = function() {
     newDiv.setAttribute("class", " token result");
     newDiv.setAttribute("tabIndex", 1);
     newDiv.style.backgroundColor = "grey";
-    this.boardDOM.appendChild(newDiv);
+    this.resultDOM.appendChild(newDiv);
   }.bind(this))
 }
 
