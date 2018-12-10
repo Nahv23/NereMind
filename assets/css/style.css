@@ -50,6 +50,7 @@ hr{
   border-radius: 50%;
   display: inline-flex;
   border: 1px solid rgba(0, 0, 0, 0.589);
+  box-shadow: 1px 3px 4px 1px rgba(0, 0, 0, 0.800);
   align-items: center;
 }
 
@@ -70,7 +71,8 @@ hr{
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-    order: 4;
+    margin-top: 4px;
+
   }
   
   .result{
@@ -122,4 +124,10 @@ button{
   margin-left: 40%;
   font: 300 18.3333px FANTASY;
   cursor: pointer;
+  box-shadow: 7px 6px 4px 0px rgba(0, 0, 0, 0.800);
+  border-radius: 23px;
+}
+
+button:hover{
+  
 }
