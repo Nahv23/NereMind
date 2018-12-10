@@ -24,17 +24,23 @@ Game.prototype.init = function() {
 }
 
 Game.prototype.stop = function (whatHappen){
-  switch (whatHappen){
-    case 1: 
+  if (whatHappen){
         this.revealSecret(); //Revela el secreto 
         setTimeout(function(){alert("Enhorabuena, has adivinado la contraseña"); }, 250); 
-      break;
-
-    case 2: 
-        this.revealSecret(); //Revela el secreto 
+        this.stopSelectables();
+  } else{
+        this.revealSecret(); //Revela el secreto
         setTimeout(function(){alert ("Has perdido"); }, 250); 
-      break;         
+        this.stopSelectables();
   }
+}
+
+Game.prototype.stopSelectables = function (){
+  
+    var selectables = document.getElementById("options");
+    selectables.removeAttribute("class");
+    selectables.setAttribute("class", "non-selectables");
+
 }
 
 Game.prototype.revealSecret = function (){
@@ -141,12 +147,13 @@ Game.prototype.giveResultDOM = function (index, numRight){
 Game.prototype.checkCoincidence = function() { 
 
   var boardEnd = this.board.table.indexOf(''); 
+  var getRight = 0; //para ver cuantos colores se han acertado
  
-  if (boardEnd === -1){ //Superado las 10 filas 
-    this.stop (2);
+  if (boardEnd === -1){ //Superado las 10 filas
+    this.giveResultDOM (boardEnd, getRight);
+    this.stop (false);
 
   }else if(boardEnd % 4 === 0) {
-    var getRight = 0; //para ver cuantos colores se han acertado
     var j = 3; // para recorrer el array secret
     for(var i = boardEnd - 1; i > boardEnd - 5; i--) {
       if (this.isCorrect(this.board.table[i], this.secret[j])){
@@ -171,7 +178,7 @@ Game.prototype.isCorrect = function (token, secret){
 Game.prototype.checkWin = function(getRight) {
  
   if (getRight === 4){
-    this.stop(1);
+    this.stop(true);
     } else {
       return false;
     }

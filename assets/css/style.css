@@ -108,6 +108,10 @@ hr{
   cursor: -webkit-grab;
 }
 
+.non-selectables{
+  pointer-events: none;
+}
+
 #options{
   display: table;
   margin: 23px auto;
