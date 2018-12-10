@@ -8,9 +8,9 @@ body{
 
 #main-board {
   background-color: #ffb36cd6;
-  border-radius: 90px 42px 90px 42px;
-  height: 1050px;
-  width: 540px;
+  border-radius: 42px 90px 42px 90px;
+  height: 823px;
+  width: 450px;
   border: #191919;
   border-style: double;
   margin: 5vh auto;
@@ -19,7 +19,7 @@ body{
 
 h1{
   text-align: center;
-  margin-top: 7%;
+  margin-top: 6%;
   text-decoration: underline;
   text-decoration-style: double;
   font-size: 40px;
@@ -39,14 +39,12 @@ hr{
 }
 
   .tokenSecret {
-    flex: auto;
     margin-left: 20px;
-    flex-direction: row;
   }
 
 .token {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   display: inline-flex;
   border: 1px solid rgba(0, 0, 0, 0.589);
@@ -61,16 +59,13 @@ hr{
 }
 
 #board > div {
-
-  margin: 10px;
-  padding: 20px;
+     padding: 15px;
 }
+
   .tableGame {
     float: left;
-    margin: 2px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
+    margin: 3px;
+    margin-left: 10px;
     margin-top: 4px;
 
   }
@@ -78,35 +73,33 @@ hr{
   .result{
     float: right;
     margin: 4px;
-    margin-top: 20px;
+    margin-top: 12px;
     margin-bottom: 15px;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.500);
   }
 
 
 .image {
-    background-image: url(../img/ironhack.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-    background-size: 140px;
-    height: 65px;
-    width: 65px;
-    border-radius: 50%;
-    display: inline-flex;
-    border: 1px solid rgba(0, 0, 0, 0.589);
-    align-items: center;
+  background-image: url(../img/ironhack.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 95px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.589);
+  align-items: center;
 }
 
 
 
 .tokenSelectable {
-  flex: auto;
-  margin-left: 6px;
-  flex-direction: row;
+  margin-left: 10px;
 }
 
 
@@ -129,5 +122,19 @@ button{
 }
 
 button:hover{
+  color: rgb(185, 7, 7);
+  background-color: #fa8080;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
   
+}
+
+
+footer{
+  text-align: right;
+  margin-right: 40px;
 }
