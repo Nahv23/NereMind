@@ -5,7 +5,6 @@ function Game() {
   this.result = new Board ();
   this.selectables = []; 
   this.colorsList = ["red", "blue", "yellow", "purple", "green", "brown"];
-  //this.guess = 0;
   this.nextItem = 0;
 
   // Inicialización de elementos del DOM

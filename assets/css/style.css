@@ -90,7 +90,7 @@ hr{
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
-    background-size: 100px;
+    background-size: 140px;
     height: 65px;
     width: 65px;
     border-radius: 50%;
@@ -110,9 +110,16 @@ hr{
 
 .tokenSelectable:hover {
   border: 2px solid white;
+  cursor: -webkit-grab;
 }
 
 #options{
   display: table;
   margin: 23px auto;
+}
+
+button{
+  margin-left: 40%;
+  font: 300 18.3333px FANTASY;
+  cursor: pointer;
 }
