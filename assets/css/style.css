@@ -7,7 +7,8 @@ body{
 }
 
 #main-board {
-  background-color: #ffb36cd6;
+  background-image: url(../img/Wood.jpg);
+  background-size: 1500px;
   border-radius: 42px 90px 42px 90px;
   height: 823px;
   width: 450px;
